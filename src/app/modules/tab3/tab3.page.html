@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 3
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="lines">
+    <ion-item  lines="none" [routerLink]="['/update_password']">
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label>Cambiar contraseña</ion-label>
+    </ion-item>
+  </div>
+  <div class="lines">
+    <ion-item lines="none" (click)="logout()">
+      <ion-icon name="exit-outline" slot="start"></ion-icon>
+      <ion-label class="logout">Cerrar sesión</ion-label>
+    </ion-item>
+  </div>
+</ion-content>

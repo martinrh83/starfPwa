@@ -1,0 +1,7 @@
+{
+  "name": "starfApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

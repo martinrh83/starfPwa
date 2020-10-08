@@ -1,0 +1,15 @@
+//CONTENT
+ion-label{
+    --color: #3c3c3c !important;
+    
+}
+.logout{
+    --color: #ec1f1f !important;
+}
+
+.lines{
+    border-top: 1px solid #D3D3D3;
+    &:last-child{
+        border-bottom: 1px solid #D3D3D3;
+    }
+}

@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div class="centerContent">
+    <div class="ion-text-center">
+      <!-- <img id="logoCT" src="assets/ct-logo.svg" alt="ct"> -->
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input name="password" type="password" ngModel required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" share="round" type="submit" color="primary" [disabled]="loginForm.invalid">Login</ion-button>
+    </form>
+    <a [routerLink]="[ '/sign_up' ]">Registrarse</a>
+  </div>
+</ion-content>

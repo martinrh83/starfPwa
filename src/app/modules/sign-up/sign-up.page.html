@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <div class="centerContent">
+    <div class="ion-text-center">
+      <!-- <img id="logoCT" src="assets/ct-logo.svg" alt="ct"> -->
+    </div>
+    <form #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" name="name" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input type="text" name="last_name" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Legajo</ion-label>
+          <ion-input type="number" name="legajo" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input name="password" type="password" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirmar contraseña</ion-label>
+          <ion-input name="passwordConfirm" type="password" ngModel required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" share="round" type="submit" color="primary" [disabled]="signUpForm.invalid">Registrarse</ion-button>
+    </form>
+  </div>
+</ion-content>

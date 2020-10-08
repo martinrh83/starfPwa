@@ -1,0 +1,24 @@
+.centerContent{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    #logoCT{
+        height: 30px;
+    }
+    form{
+        width: 80%;
+        margin:20px 0;
+    }
+    .link{
+        font-size: 14px;
+        padding: 5px 0;
+    }
+    ion-button{
+        margin-top:40px;
+    }
+    ion-item{
+        --background-color: #fff;
+    }
+}
