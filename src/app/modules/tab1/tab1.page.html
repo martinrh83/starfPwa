@@ -1,18 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Notificaciones diarias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
-  </ion-header>
-  <button (click)="listen()">
-    Get notified!
-  </button>
+  </ion-header> -->
+  <div class="container">
+    <div class="container__card">
+      <div class="container__card--subject">MATEMATICA DISCRETA</div>
+      <div class="container__card--hour">Asistencia registrada a las 08:15 hs</div>
+    </div>
+    <div class="container__card">
+      <div class="container__card--subject">ALGORITMOS</div>
+      <div class="container__card--hour">Asistencia registrada a las 10:23 hs</div>
+    </div>
+    <div class="container__card">
+      <div class="container__card--subject">ARQUITECTURA DE COMPUTADORAS</div>
+      <div class="container__card--hour">Asistencia registrada a las 12:15 hs</div>
+    </div>
+    <div class="container__card">
+      <div class="container__card--subject">INGENIERIA Y SOCIEDAD</div>
+      <div class="container__card--hour">Asistencia registrada a las 14:15 hs</div>
+    </div>
+  </div>
 </ion-content>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { CalendarPage } from '../calendar/calendar.page';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
     path: 'tabs',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
-  }
+  },
+  
 ];
 
 @NgModule({

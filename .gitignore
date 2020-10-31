@@ -12,7 +12,7 @@
 Thumbs.db
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
-
+hosting.d3d3.cache
 *.log
 log.txt
 npm-debug.log*
@@ -29,3 +29,5 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+.firebaserc
+firebase.json

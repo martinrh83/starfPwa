@@ -1,20 +1,26 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { DatePipe, registerLocaleData } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import localeEs from '@angular/common/locales/es';
+import localeEsExtra from '@angular/common/locales/extra/es';
+
+registerLocaleData(localeEs, 'es-AR', localeEsExtra);
 //PAGES
 import { LoginPage } from "./modules/login/login.page";
 import { SignUpPage } from './modules/sign-up/sign-up.page';
+
+
 
 //SERVICES
 import { ToastService } from './core/services/toast.service';
@@ -54,6 +60,7 @@ import { MyHttpInterceptor } from './core/interceptor/http.interceptor';
     LoaderService,
     HttpService,
     MessagingService,
+    { provide: LOCALE_ID, useValue: 'es-AR'},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyHttpInterceptor,

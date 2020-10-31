@@ -22,7 +22,7 @@ export class AuthService {
   resetPassword(email){
     return this.http.post('auth/reset-password',{email: email}, 'F');
   }
-  
+  getAttendances = () => this.http.get('users/get_attendances');
   updatePassword = (data) => this.http.post('users/update_password', data, 'F');
   registerTokenFCM = (tokenFCM) => this.http.post('users/register_token', {token: tokenFCM}); 
   logout(){

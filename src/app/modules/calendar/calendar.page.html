@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Calendario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-grid fixed>
+      <ion-row>
+        <div class="text-center">
+          <ion-icon name="chevron-back-outline" (click)="previousMonth()"></ion-icon>
+          <span class="mesName">{{date.format('MMMM')}}</span>
+          <ion-icon name="chevron-forward-outline" (click)="nextMonth()"></ion-icon>
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="calendar">
+            <div class="flex-calendar">
+              <div class="calendar-days"><p>L</p></div>
+              <div class="calendar-days"><p>M</p></div>
+              <div class="calendar-days"><p>M</p></div>
+              <div class="calendar-days"><p>J</p></div>
+              <div class="calendar-days"><p>V</p></div>
+              <div class="calendar-days"><p>S</p></div>
+              <div class="calendar-days"><p>D</p></div>
+            </div>
+            <div class="flex-calendar flex-wrap" >
+              <div class="calendar-days" [ngClass]="{'dia_presente': setPresente(day)}" *ngFor="let day of daysArr"><p>{{day?.date()}}</p>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

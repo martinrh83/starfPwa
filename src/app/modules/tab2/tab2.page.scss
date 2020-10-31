@@ -1,0 +1,11 @@
+.lines{
+  border-top: 1px solid #D3D3D3;
+  &:last-child{
+      border-bottom: 1px solid #D3D3D3;
+  }
+}
+//CONTENT
+ion-label{
+  --color: #3c3c3c !important;
+  
+}
