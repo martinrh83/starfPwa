@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginPage } from './modules/login/login.page';
 import { SignUpPage } from './modules/sign-up/sign-up.page';
-
+import { UpdatePasswordComponent } from './modules/update-password/update-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'sign_up',
     component: SignUpPage
+  },
+  {
+    path: 'update_password',
+    component: UpdatePasswordComponent
   },
   {
     path: 'tabs',

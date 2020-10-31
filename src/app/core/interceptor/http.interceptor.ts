@@ -79,7 +79,7 @@ export class MyHttpInterceptor implements HttpInterceptor {
 
                 let msg = JSON.parse(error.error).message;
                 //Swal.fire(this.prepareSwal('error', 'Oops...', msg));
-                this.toast.basicToast(msg);
+                this.toast.errorToast(msg);
                 return throwError(error);
             }),
         );

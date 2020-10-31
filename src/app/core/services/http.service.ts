@@ -29,6 +29,13 @@ export class HttpService {
     return this.httpClient.put(this.getBaseURL() + path, JSON.stringify(body)).pipe(catchError(this.formatErrors));
   }
 
+  public patch(path: string, body: object = {}, isText = null): Observable<any> {
+    if (isText != null) {
+      return this.httpClient.patch(this.getBaseURL() + path, JSON.stringify(body), { responseType: 'text' }).pipe(catchError(this.formatErrors));
+    }
+    return this.httpClient.patch(this.getBaseURL() + path, JSON.stringify(body)).pipe(catchError(this.formatErrors));
+  }
+
   public post(path: string, body: object = {}, isText = null): Observable<any> {
     if (isText != null) {
       return this.httpClient.post(this.getBaseURL() + path, JSON.stringify(body), { responseType: isText }).pipe(catchError(this.formatErrors));

@@ -19,7 +19,7 @@ registerLocaleData(localeEs, 'es-AR', localeEsExtra);
 //PAGES
 import { LoginPage } from "./modules/login/login.page";
 import { SignUpPage } from './modules/sign-up/sign-up.page';
-
+import { UpdatePasswordComponent } from './modules/update-password/update-password.component';
 
 
 //SERVICES
@@ -37,7 +37,8 @@ import { MyHttpInterceptor } from './core/interceptor/http.interceptor';
   declarations: [
     AppComponent,
     LoginPage,
-    SignUpPage
+    SignUpPage,
+    UpdatePasswordComponent
   ],
   entryComponents: [],
   imports: [

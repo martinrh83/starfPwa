@@ -8,11 +8,12 @@ export class ToastService {
   toast: any;
   constructor(private toastCtrl: ToastController) { }
 
-  async basicToast(message){
+  async basicToast(message, color){
     this.toast = await this.toastCtrl.create({
       message,
       duration: 3000,
-      position: "top"
+      position: "bottom",
+      color: color
     })
     this.toast.present();
   };
@@ -22,7 +23,7 @@ export class ToastService {
     this.toast = await this.toastCtrl.create({
       message,
       duration: 3000,
-      position: "top",
+      position: "bottom",
       color: "danger"
     })
     this.toast.present();
