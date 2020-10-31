@@ -10,10 +10,10 @@ import { AngularFireMessaging } from '@angular/fire/messaging';
 export class Tab1Page {
 
   constructor(private _authService: AuthService, private afMessaging: AngularFireMessaging) {
-    console.log('asdasd')
+    /*console.log('asdasd')
     this._authService.getUsers().subscribe(res =>{
       console.log(res)
-    })
+    })*/
     
   }
 }

@@ -144,6 +144,6 @@ export class MyHttpInterceptor implements HttpInterceptor {
         localStorage.clear();
         sessionStorage.clear();
         this.restartReqs();
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
     }
 }
