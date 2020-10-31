@@ -18,10 +18,10 @@ export class Tab2Page {
     ) {
     this._authService.getAttendances().subscribe((res) =>{
       this.attendances = res.data.attendances;
-      this.attendances.push({registeredAt: "2020-10-01T11:35:00.000Z",
+      /*this.attendances.push({registeredAt: "2020-10-01T11:35:00.000Z",
       _id: "5f7a4f272b59413e573b3fb7",
       subjectCode: "AED",
-      subjectName: "ALGORITMOS"})
+      subjectName: "ALGORITMOS"})*/
        this.groups = this.groupByArray(this.attendances, 'subjectName');
 
     })

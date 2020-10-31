@@ -31,7 +31,7 @@ export class SignUpPage implements OnInit {
       data['passwordConfirm'] = form.controls['passwordConfirm'].value;
       console.log(data);
       this._auth.signUp(data).subscribe((res)=>{
-        console.log(res);
+        this.router.navigate(['/login']);
       });
     }
   }

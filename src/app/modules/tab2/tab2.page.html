@@ -7,9 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
+  <div *ngIf="attendances.length">
     <ion-item class="lines" lines="none" *ngFor="let item of groups" (click)="sendObj(item)"> 
       <ion-label>{{item.key}}</ion-label>
     </ion-item>
+  </div>
+  <div class="noContent" *ngIf="!attendances.length">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <div class="info">No hay información disponible.</div>
   </div>
 </ion-content>

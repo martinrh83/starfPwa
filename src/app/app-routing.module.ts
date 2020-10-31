@@ -5,8 +5,9 @@ import { SignUpPage } from './modules/sign-up/sign-up.page';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
-    path: '',
+    path: 'login',
     component: LoginPage
   },
   {

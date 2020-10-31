@@ -24,7 +24,7 @@ export class MyHttpInterceptor implements HttpInterceptor {
         private injector: Injector,
         private routerService: RouterService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.loaderService.show()
+        this.loaderService.showLoader()
         let auth = "";
         let token = localStorage.getItem('token');
         console.log('entre')
@@ -88,7 +88,7 @@ export class MyHttpInterceptor implements HttpInterceptor {
     restartReqs() {
         this.reqs--;
         if (this.reqs <= 0) {
-            this.loaderService.hide();
+            this.loaderService.hideLoader();
         }
     }
     private _checkTokenExpiryErr(error: HttpErrorResponse): boolean {

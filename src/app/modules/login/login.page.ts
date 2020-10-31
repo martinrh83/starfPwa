@@ -3,8 +3,6 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/user/auth.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/core/services/loader.service';
-
 
 @Component({
   selector: 'app-login',
@@ -16,13 +14,8 @@ export class LoginPage implements OnInit {
   constructor(
     private router:Router,
     private _auth: AuthService,
-    private _storage: StorageService,
-    private _loader: LoaderService
-    ) { 
-      this._loader.isLoading.subscribe((loadingState)=>{
-      })
-
-    }
+    private _storage: StorageService
+    ) {}
 
   ngOnInit() {
   }
