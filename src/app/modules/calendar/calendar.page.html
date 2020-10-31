@@ -1,9 +1,9 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Calendario</ion-title>
+    <ion-title class="title">Calendario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,14 +20,14 @@
       <ion-row>
         <ion-col>
           <div class="calendar">
-            <div class="flex-calendar">
-              <div class="calendar-days"><p>L</p></div>
-              <div class="calendar-days"><p>M</p></div>
-              <div class="calendar-days"><p>M</p></div>
-              <div class="calendar-days"><p>J</p></div>
-              <div class="calendar-days"><p>V</p></div>
-              <div class="calendar-days"><p>S</p></div>
-              <div class="calendar-days"><p>D</p></div>
+            <div class="flex-calendar weekdayDiv">
+              <div class="calendar-days weekdayDiv"><p>L</p></div>
+              <div class="calendar-days weekdayDiv"><p>M</p></div>
+              <div class="calendar-days weekdayDiv"><p>M</p></div>
+              <div class="calendar-days weekdayDiv"><p>J</p></div>
+              <div class="calendar-days weekdayDiv"><p>V</p></div>
+              <div class="calendar-days weekdayDiv"><p>S</p></div>
+              <div class="calendar-days weekdayDiv"><p>D</p></div>
             </div>
             <div class="flex-calendar flex-wrap" >
               <div class="calendar-days" [ngClass]="{'dia_presente': setPresente(day)}" *ngFor="let day of daysArr"><p>{{day?.date()}}</p>

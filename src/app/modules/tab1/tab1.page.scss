@@ -1,8 +1,15 @@
+ion-toolbar{
+  --background: #ffce00;
+  .title{
+    font-family:"Heebo-Bold" ;
+    font-size: 18px;
+  }
+}
 .container{
   display: flex;
   flex-flow: column;
   height: 100%;
-  background-color: #E8EBEA;
+  background-color: #fafafa;
   padding:20px;
   &__card{
     display: flex;

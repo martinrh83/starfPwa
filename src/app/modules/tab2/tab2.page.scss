@@ -1,3 +1,13 @@
+ion-toolbar{
+  --background: #ffce00;
+  .title{
+    font-family:"Heebo-Bold" ;
+    font-size: 18px;
+  }
+}
+ion-content{
+  --background: #fafafa;
+}
 .lines{
   border-top: 1px solid #D3D3D3;
   &:last-child{

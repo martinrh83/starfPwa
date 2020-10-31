@@ -1,20 +1,25 @@
+<ion-header no-border>
+  <div class="login-header ion-padding">
+    <img class="logo-img" src="assets/icons/icon-128x128.png" alt="">
+  </div>
+</ion-header>
 <ion-content [fullscreen]="true">
   <div class="centerContent">
-    <div class="ion-text-center">
-      <!-- <img id="logoCT" src="assets/ct-logo.svg" alt="ct"> -->
+    <div class="ion-text-center title">
+      Login
     </div>
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <ion-list>
         <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" ngModel required></ion-input>
+          <ion-input type="email" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" ngModel required></ion-input>
+          <ion-icon name="person-outline" color="medium" slot="start"></ion-icon>
         </ion-item>
         <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input name="password" type="password" ngModel required></ion-input>
+          <ion-icon name="lock-closed-outline" color="medium" slot="start"></ion-icon>
+          <ion-input name="password" placeholder="Contraseña" type="password" ngModel required></ion-input>
         </ion-item>
       </ion-list>
-      <ion-button expand="block" share="round" type="submit" color="primary" [disabled]="loginForm.invalid">Login</ion-button>
+      <ion-button class="ion-button-class" expand="block" share="round" type="submit" color="primary" [disabled]="loginForm.invalid">Login</ion-button>
     </form>
     <a [routerLink]="[ '/sign_up' ]">Registrarse</a>
   </div>

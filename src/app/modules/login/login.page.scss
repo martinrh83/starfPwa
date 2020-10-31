@@ -1,3 +1,15 @@
+.login-header{
+    background: var(--theme-color);
+    .logo-img{
+        display: block;
+        width: 120px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+ion-content{
+    --background: #fafafa;
+}
 .centerContent{
     flex-direction: column;
     display: flex;
@@ -7,6 +19,10 @@
     #logoCT{
         height: 30px;
     }
+    .title{
+        font-family: 'Heebo-Black';
+        font-size:24px;
+    }
     form{
         width: 80%;
         margin:20px 0;
@@ -15,10 +31,20 @@
         font-size: 14px;
         padding: 5px 0;
     }
-    ion-button{
-        margin-top:40px;
+    ion-list{
+        background: #fafafa !important;
     }
     ion-item{
+        border-radius: 10px !important;
+        margin: 10px 0;
+        font-size: 0.9em;
         --background-color: #fff;
+        border: 1px solid #f1f1f1 !important;
+        width: 100%;
+        max-height: 10vh;
+    }
+    ion-input{
+        --background: #fff;
     }
 }
+

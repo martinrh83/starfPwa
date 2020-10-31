@@ -4,12 +4,12 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #ffce00;
   --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #000;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #ffce00;
+  --ion-color-primary-tint: #ffce00;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -74,6 +74,52 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --theme-color: #ffce00;
+  --theme-dark: #000;
+  --ion-color-gray: #d7d8d4;
+}
+:root[mode=ios],
+:root[mode=md]{
+  --ion-font-family: "Heebo-Regular" !important;
+  font-family: "Heebo-Regular", "Times New Roman", serif !important;
+}
+
+@font-face {
+  font-family: Heebo-Black;
+  src: url("/assets/fonts/Heebo-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-Bold;
+  src: url("/assets/fonts/Heebo-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-ExtraBold;
+  src: url("/assets/fonts/Heebo-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-EntraLight;
+  src: url("/assets/fonts/Heebo-EntraLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-Light;
+  src: url("/assets/fonts/Heebo-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-Medium;
+  src: url("/assets/fonts/Heebo-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-Regular;
+  src: url("/assets/fonts/Heebo-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-SemiBold;
+  src: url("/assets/fonts/Heebo-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Heebo-Thin;
+  src: url("/assets/fonts/Heebo-Thin.ttf") format("truetype");
 }
 
 @media (prefers-color-scheme: dark) {

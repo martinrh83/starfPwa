@@ -1,20 +1,15 @@
-<ion-header class="ion-no-border">
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Calendario de asistencias
+    <ion-title class="title">
+      Listado de asistencias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="lines">
-    <ion-item  lines="none" *ngFor="let item of groups" (click)="sendObj(item)"> 
+  <div>
+    <ion-item class="lines" lines="none" *ngFor="let item of groups" (click)="sendObj(item)"> 
       <ion-label>{{item.key}}</ion-label>
     </ion-item>
   </div>
-  <!-- <div class="lines">
-    <ion-item lines="none">
-      <ion-label>Algoritmos</ion-label>
-    </ion-item>
-  </div> -->
 </ion-content>

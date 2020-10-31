@@ -1,4 +1,13 @@
-//CONTENT
+ion-toolbar{
+    --background: #ffce00;
+    .title{
+      font-family:"Heebo-Bold" ;
+      font-size: 18px;
+    }
+}
+ion-content{
+    --background: #fafafa;
+}
 ion-label{
     --color: #3c3c3c !important;
     
