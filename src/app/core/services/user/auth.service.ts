@@ -23,6 +23,7 @@ export class AuthService {
     return this.http.post('auth/reset-password',{email: email}, 'F');
   }
   getAttendances = () => this.http.get('users/get_attendances');
+  getDailyNotifications = () => this.http.get('notifications/daily_notifications');
   updatePassword = (data) => this.http.patch('users/update_password', data);
   registerTokenFCM = (tokenFCM) => this.http.post('users/register_token', {token: tokenFCM}); 
   logout(){
