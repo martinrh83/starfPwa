@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationEnd, NavigationCancel, GuardsCheckStart, ActivationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel, GuardsCheckStart, ActivationStart } from '@angular/router';
+import { LoaderService } from './../services/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,20 @@ export class RouterService {
   private cancelUrl: string = undefined;
   private activationStart: string = undefined;
   private guardsCheck: string = undefined;
-  constructor(private router: Router) {
+  constructor(private router: Router, private loader: LoaderService) {
     this.currentUrl = this.router.url;
     router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationStart) {
+        this.loader.showLoader();
+      } else if (event instanceof NavigationEnd) {
+        this.loader.hideLoader();
         this.previousUrl = this.currentUrl;
         this.currentUrl = event.url;
-      }
+      };
+      /*if (event instanceof NavigationEnd) {
+        this.previousUrl = this.currentUrl;
+        this.currentUrl = event.url;
+      }*/
       if (event instanceof NavigationCancel){
         this.cancelUrl = event.url;
       }

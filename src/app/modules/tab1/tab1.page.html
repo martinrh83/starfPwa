@@ -8,9 +8,15 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <div class="container__card" *ngFor="let item of notifications">
-      <div class="container__card--subject">{{item.subjectName}}</div>
-      <div class="container__card--hour">Asistencia registrada a las {{item.formattedHour}} hs</div>
+    <div  *ngIf="notifications.length">
+      <div class="container__card" *ngFor="let item of notifications">
+        <div class="container__card--subject">{{item.subjectName}}</div>
+        <div class="container__card--hour">Asistencia registrada a las {{item.formattedHour}} hs</div>
+      </div>
+    </div>
+    <div class="noContent" *ngIf="!notifications.length">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <div class="info">No hay notificaciones disponibles.</div>  
     </div>
   </div>
 </ion-content>

@@ -16,7 +16,7 @@ export class AuthService {
     this.dataChanged = new BehaviorSubject({});
   }
 
-  login = (email:string,password: string) => this.http.post('users/login',{email, password});
+  login = (legajo:number,password: string) => this.http.post('users/login',{legajo, password});
   signUp = (data: Object) => this.http.post('users/signup', data);
   getUsers = () => this.http.get('users');
   resetPassword(email){

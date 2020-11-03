@@ -27,7 +27,7 @@ export class MyHttpInterceptor implements HttpInterceptor {
         this.loaderService.showLoader()
         let auth = "";
         let token = localStorage.getItem('token');
-        console.log('entre')
+        console.log('Interceptor...')
         if (token) {
             auth = 'Bearer ' + token;
         }
@@ -48,19 +48,19 @@ export class MyHttpInterceptor implements HttpInterceptor {
                 }),
                 catchError(error => {
                     this.restartReqs();
-                    this.toast.errorToast("El usuario o la contraseña son invalidos");
+                    this.toast.errorToast("El legajo o la contraseña son invalidos");
                     this.http.showCredError();
                     return throwError(error);
                 })
             )
         }
-        if (jsonReq.url.endsWith("/token")) {
+        /*if (jsonReq.url.endsWith("/register_token")) {
             return next.handle(jsonReq).pipe(
                 catchError(error => {
                     this.routerService.setCancelUrl(this.routerService.getCurrentUrl());
                     return throwError(error);
                 }))
-        }
+        }*/
 
         return next.handle(jsonReq).pipe(
             map((event: HttpEvent<any>) => {
@@ -100,25 +100,12 @@ export class MyHttpInterceptor implements HttpInterceptor {
         );
     }
     private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        console.log('entre aqui')
         if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
 
             return null;
-            /*
-                Reemplazar con url de api para renovación de token
-            */
-
-            // return this.appService.renewToken().pipe(
-            //     switchMap((token: any) => {
-            //         this.refreshTokenSubject.next(token.token);
-            //         this.restartReqs();
-            //         this.isRefreshing = false;
-            //         return next.handle(this.addToken(request, token.token));
-            //     }), catchError((error => {
-            //         this.clearAndLoginRedirect();
-            //         return throwError(error);
-            //     })));
 
         } else {
             return this.refreshTokenSubject.pipe(

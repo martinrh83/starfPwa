@@ -22,14 +22,15 @@ export class LoginPage implements OnInit {
 
   login(form: NgForm) {
     if (form.valid) {
-      let email = form.controls['email'].value;
+      let legajo = form.controls['legajo'].value;
       let password = form.controls['password'].value;
-      this._auth.login(email,password).subscribe((res)=>{
+      this._auth.login(legajo,password).subscribe((res)=>{
         console.log(res);
         if (res){
           this._storage.setItem('token',res.token);
           this._storage.setItem('userData', JSON.stringify(res.data.user));
           this._auth.registerTokenFCM(this._storage.getItem('tokenFCM')).subscribe(result =>{
+
             console.log(result)
           })
           this.router.navigate(['tabs']);
