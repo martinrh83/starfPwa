@@ -1,28 +1,20 @@
-import { Injectable, Injector } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpResponse, HttpClient } from '@angular/common/http';
-import { Observable, throwError, Subject, BehaviorSubject } from 'rxjs';
-import { catchError, map, finalize, switchMap, filter, take, timeout } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, finalize } from 'rxjs/operators';
 import { LoaderService } from '../../core/services/loader.service';
 import { Router } from '@angular/router';
-import { RouterService } from '../../core/services/router.service';
-import { HttpService } from '../services/http.service';
 import { __await } from 'tslib';
 import { ToastService } from '../../core/services/toast.service';
 
 
 @Injectable()
 export class MyHttpInterceptor implements HttpInterceptor {
-    private reqs = 0;
-    private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-    private isRefreshing = false;
-    inflightAuthRequest = null;
+
     constructor(
-        private http: HttpService,
         private loaderService: LoaderService,
         private router: Router,
-        private toast: ToastService,
-        private injector: Injector,
-        private routerService: RouterService) { }
+        private toast: ToastService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.loaderService.showLoader()
         let auth = "";
@@ -39,98 +31,32 @@ export class MyHttpInterceptor implements HttpInterceptor {
             }
         });
 
-        this.reqs++;
-        if (jsonReq.url.endsWith('/login')) {
-            return next.handle(jsonReq).pipe(
-                map((event: HttpEvent<any>) => {
-                    this.restartReqs();
-                    return event;
-                }),
-                catchError(error => {
-                    this.restartReqs();
-                    this.toast.errorToast("El legajo o la contraseña son invalidos");
-                    this.http.showCredError();
-                    return throwError(error);
-                })
-            )
-        }
-        /*if (jsonReq.url.endsWith("/register_token")) {
-            return next.handle(jsonReq).pipe(
-                catchError(error => {
-                    this.routerService.setCancelUrl(this.routerService.getCurrentUrl());
-                    return throwError(error);
-                }))
-        }*/
-
         return next.handle(jsonReq).pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                    this.restartReqs();
-                    if (event.status != 200) {
-                    }
+                    console.log('event--->>>', event);
                 }
-
                 return event;
             }),
             catchError((error: HttpErrorResponse) => {
-                this.restartReqs();
-
-                if (this._checkTokenExpiryErr(error)) { return this.handle401Error(jsonReq, next); }
-
-                let msg = JSON.parse(error.error).message;
-                //Swal.fire(this.prepareSwal('error', 'Oops...', msg));
-                this.toast.errorToast(msg);
+                console.log(error)
+                if(error.status == 401){
+                    this.clearAndLoginRedirect();
+                }
+                if(error.error.message){
+                    this.toast.errorToast(error.error.message);
+                }else{
+                    this.toast.errorToast('Ha ocurrido un problema');
+                }           
                 return throwError(error);
-            }),
+            }),        
+            finalize(() => {
+                this.loaderService.hideLoader();
+            })
         );
-    }
-
-    restartReqs() {
-        this.reqs--;
-        if (this.reqs <= 0) {
-            this.loaderService.hideLoader();
-        }
-    }
-    private _checkTokenExpiryErr(error: HttpErrorResponse): boolean {
-        return (
-            error.status &&
-            error.status === 401 &&
-            error.error &&
-            error.error.message === 'Token has expired'
-        );
-    }
-    private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('entre aqui')
-        if (!this.isRefreshing) {
-            this.isRefreshing = true;
-            this.refreshTokenSubject.next(null);
-
-            return null;
-
-        } else {
-            return this.refreshTokenSubject.pipe(
-                switchMap(jwt => {
-                    this.restartReqs();
-                    return next.handle(this.addToken(request, jwt)).pipe(
-                        catchError(error => {
-                            this.clearAndLoginRedirect();
-                            return throwError(error);
-                        })
-                    );
-                }));
-        }
-    }
-    private addToken(request: HttpRequest<any>, token: string) {
-        return request.clone({
-            setHeaders: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
     }
     private clearAndLoginRedirect() {
         localStorage.clear();
-        sessionStorage.clear();
-        this.restartReqs();
         this.router.navigate(['login']);
     }
 }
