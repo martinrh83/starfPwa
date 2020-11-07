@@ -15,7 +15,8 @@ ion-toolbar{
   //width: 462px;
   display:flex;
   flex-flow: column;
-  background: #fff;
+  //background: #fff;
+  align-items: center;
 }
 .text-center{
   margin:0 auto;
@@ -33,10 +34,11 @@ ion-toolbar{
   font-weight: bold;
 }
 .flex-calendar {
-  width:100%;
-  padding:10px;
+  width:350px;
+  padding:10px 10px 10px 30px;
   display: flex;
   flex-flow: row;
+  background-color: #fff;
 }
 
 .flex-wrap{
@@ -50,7 +52,8 @@ ion-toolbar{
   text-align: center;
   display: inline-block;
   margin: 10px 0 0 2%;
-  width: calc(100% * (1/7) - 6px - 1px);
+  width: 35px;
+  //width: calc(100% * (1/7) - 6px - 1px);
 }
 
 .inactive{
