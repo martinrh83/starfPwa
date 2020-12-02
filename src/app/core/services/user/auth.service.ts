@@ -24,6 +24,7 @@ export class AuthService {
   }
   getAttendances = () => this.http.get('users/get_attendances');
   getDailyNotifications = () => this.http.get('notifications/daily_notifications');
+  getLastAttendance = (data: Object) => this.http.post('notifications/last_attendance', data);
   updatePassword = (data) => this.http.patch('users/update_password', data);
   registerTokenFCM = (tokenFCM) => this.http.post('users/register_token', {token: tokenFCM}); 
   logout(){

@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="container">
-    <ion-grid fixed>
+    <ion-grid fixed class="container_top">
       <ion-row>
         <div class="text-center">
           <ion-icon name="chevron-back-outline" (click)="previousMonth()"></ion-icon>
@@ -37,5 +37,10 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <div class="progress">
+      <span>Asistencia: </span>
+      <ion-progress-bar class="progress_bar" [color]="barColor" [value]="bar"></ion-progress-bar>
+      <span> {{percentage}} %</span>
+    </div>
   </div>
 </ion-content>

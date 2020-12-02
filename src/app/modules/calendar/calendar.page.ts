@@ -13,12 +13,23 @@ export class CalendarPage {
   public date = moment();
   public daysArr;
   asistencias:any;
-
+  percentage: any;
+  bar: any;
+  barColor: any;
   constructor(private _sharedService: SharedService) { 
     this.daysArr = this.createCalendar(this.date);
     this._sharedService.sharedObj.subscribe(obj => {
       this.asistencias = obj['values'];
-      console.log(this.asistencias)
+      let attendancesSorted = this.asistencias.sort((d1, d2) => new Date(d1.createdAt).getTime() - new Date(d2.createdAt).getTime());
+      let lastAttendance = attendancesSorted[attendancesSorted.length - 1]
+      //console.log(lastAttendance);
+      this.percentage = lastAttendance.percentageCompleted;
+      this.bar = this.percentage / 100;
+      if(this.percentage >= 75){
+        this.barColor = "success";
+      }else{
+        this.barColor = "danger";
+      }
     }); 
   }
 

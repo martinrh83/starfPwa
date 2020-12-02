@@ -10,6 +10,13 @@ ion-toolbar{
   height: 100%;
   align-items: center;
   background: #fafafa;
+  flex-flow: column;
+  &_top{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
 }
 .calendar{
   //width: 462px;
@@ -64,4 +71,19 @@ ion-toolbar{
   background-color:yellowgreen;
   color: #fff;
   font-weight: bold;
+}
+.progress{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 10%;
+  &_bar{
+    width: 50%;
+    padding: 5px;
+    margin: 0 10px;
+  }
+  span{
+    font-weight: bold;
+  }
 }
