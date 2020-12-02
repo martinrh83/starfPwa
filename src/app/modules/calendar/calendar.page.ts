@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from './../../core/services/user/shared.service';
+import { AuthService } from './../../core/services/user/auth.service';
 import * as moment from 'moment';
 moment.locale('es-AR');
 moment.weekdays(true);
@@ -16,7 +17,7 @@ export class CalendarPage {
   percentage: any;
   bar: any;
   barColor: any;
-  constructor(private _sharedService: SharedService) { 
+  constructor(private _sharedService: SharedService, private _authService: AuthService, ) { 
     this.daysArr = this.createCalendar(this.date);
     this._sharedService.sharedObj.subscribe(obj => {
       this.asistencias = obj['values'];
@@ -62,4 +63,15 @@ export class CalendarPage {
       }
     }
   }
+
+  /*setHoliday(day){
+    const year = new Date().getFullYear();
+    this._authService.getHolidays(year).subscribe((result)=>{
+      let array = JSON.parse(JSON.stringify(result));
+      for (let i=0; i < array.length ; i++) {
+        let holiday = new Date(`${array[i].dia}/${array[i].mes}/${year}`);
+        if(moment(holiday).isSame(day, 'day')) return true;
+      }
+    });
+  }*/
 }

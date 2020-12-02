@@ -15,7 +15,9 @@ export class Tab2Page {
     private _authService: AuthService, 
     private _sharedService: SharedService,
     private router: Router
-    ) {
+    ) {}
+
+  ionViewWillEnter(){
     this._authService.getAttendances().subscribe((res) =>{
       this.attendances = res.data.attendances;
       /*this.attendances.push({registeredAt: "2020-10-01T11:35:00.000Z",
@@ -25,9 +27,8 @@ export class Tab2Page {
        this.groups = this.groupByArray(this.attendances, 'subjectName');
 
     })
-
   }
-
+  
   groupByArray(xs, key) {
     return xs.reduce(function (rv, x) {
         let v = key instanceof Function ? key(x) : x[key];

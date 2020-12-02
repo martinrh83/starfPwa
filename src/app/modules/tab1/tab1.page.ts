@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { AuthService } from './../../core/services/user/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +10,10 @@ import { AuthService } from './../../core/services/user/auth.service';
 
 export class Tab1Page {
   notifications = [];
-  constructor(private _authService: AuthService) {
+
+  constructor(private _authService: AuthService) {}
+
+  ionViewWillEnter(){
     this._authService.getDailyNotifications().subscribe(res =>{
       this.notifications = res.data.dailyAttendances;
       this.notifications.forEach(el => {
@@ -20,6 +24,6 @@ export class Tab1Page {
         });
         el.formattedHour = hour;
       });
-    })
+    });  
   }
 }
