@@ -12,9 +12,11 @@ export class TutorialGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    console.log('entre al guard')
     const isComplete = JSON.parse(this._storage.getItem('tutorialComplete'));
+    console.log(isComplete)
     if(!isComplete){
-      this.router.navigateByUrl('/tutorial');
+      this.router.navigateByUrl('/welcome');
     }
     return isComplete;
   }

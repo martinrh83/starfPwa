@@ -8,12 +8,12 @@ import { TutorialGuard } from 'src/app/core/guards/tutorial.guard';
 const routes: Routes = [
   { path: '', 
     redirectTo: 'login',
-    pathMatch: 'full',
-    canActivate: [TutorialGuard]
+    pathMatch: 'full'
   },
   {
     path: 'login',
-    component: LoginPage
+    component: LoginPage,
+    canActivate: [TutorialGuard]
   },
   {
     path: 'sign_up',
