@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-slides #slides pager="true" (ionSlideWillChange)="slideChanged()">
+    <ion-slide *ngFor="let slide of slidesCards" [ngStyle]="{'background-color': slide.back_color, 'color': slide.color}">
+      <div class="container">
+        <div class="container_top">
+          <ion-icon [name]="slide.icon"></ion-icon>
+        </div>
+        <div class="container_bottom">
+          <h3>{{slide.description}}</h3>
+          <button (click)="finishTutorial()">{{buttonText}}</button>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,7 +1,23 @@
 
 
+
+
 ion-tab-button{
-  --background: #ffce00;
-  --color: darkgoldenrod;
-  --color-selected: #000;
+  --background: #29375b;
+  --color: gray;
+  --color-selected: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  &::before {
+    background-color: transparent;
+    display: block;
+    content: "";
+    margin: 0 auto;
+    width: 20px;
+    height: 3px;
+  }
+
+  &.tab-selected::before {
+    background-color: #fff;
+  }
 }
