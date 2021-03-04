@@ -51,4 +51,14 @@ export class Tab2Page {
     this._sharedService.nextObj(item);
     this.router.navigate(['/tabs/tab2/calendar']);
   }
+
+  doRefresh(event) {
+    console.log('Actualizando...');
+    this._authService.getAttendances().subscribe((res) =>{
+      console.log('Finalizó actualización.');
+      this.attendances = res.data.attendances;
+      this.groups = this.groupByArray(this.attendances, 'subjectName');
+      event.target.complete();
+    })
+  }
 }

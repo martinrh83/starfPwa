@@ -6,7 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div *ngIf="attendances.length">
     <ion-item class="lines" lines="none" *ngFor="let item of groups" (click)="sendObj(item)"> 
       <ion-label>{{item.key}}</ion-label>
